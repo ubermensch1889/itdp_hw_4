@@ -6,12 +6,17 @@
 
 ## Настройка окружения
 
-Устанавливаем нужные инструменты.
-`sudo apt install python3-venv`
+Заходим на jump-node и переходим на пользователя с правами suders. Устанавливаем нужные инструменты.  
+`sudo apt install python3-venv`  
 `sudo apt install python3-pip`
 
-Скачиваем и разархивируем Spark.
-`wget https://archive.apache.org/dist/spark/spark-3.5.3/spark-3.5.3-bin-hadoop3.tgz`
+Переключаемся на пользователя hadoop:  
+```
+sudo -i -u hadoop
+```
+
+Скачиваем и разархивируем Spark.  
+`wget https://archive.apache.org/dist/spark/spark-3.5.3/spark-3.5.3-bin-hadoop3.tgz`  
 `tar -xzvf spark-3.5.3-bin-hadoop3.tgz`
 
 Создаем нужные переменные окружения.
@@ -56,7 +61,7 @@ hdfs dfs -mkdir /input
 hdfs dfs -chmod g+w /input
 ```
 
-Загрузим на файл на hdfs.
+Загрузим на файл на hdfs.  
 `hdfs dfs -put <имя вашего файла> /input`
 
 ## Работа с Apache Spark
@@ -103,7 +108,7 @@ exit
 hive
 USE test;
 DESCRIBE FORMATTED spark_partitions;
-SELECT * FROM spark_partitions LIMIT 10;
+SELECT * FROM spark_partitions;
 ```
 
 
